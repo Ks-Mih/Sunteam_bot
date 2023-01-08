@@ -1,4 +1,3 @@
-
 INSERT_CHAT_ID_QUERY = 'INSERT INTO quiz_surprise_type (chat_id) VALUES (?);'
 UPDATE_ANSWER_QUERY = 'Update quiz_surprise_type set q_type = ? where chat_id = ?'
 
@@ -21,6 +20,10 @@ def update_query(table_name, columns, name_id_column):
 def select_with_where_query(table_name, select_columns, where_column):
     return 'SELECT ' + __create_list(select_columns) + ' FROM ' + table_name + \
            ' WHERE ' + __create_equals_list(where_column) + ';'
+
+
+def select_query(table_name, select_columns):
+    return 'SELECT ' + __create_list(select_columns) + ' FROM ' + table_name + ';'
 
 
 def delete_query(table_name, where_column):

@@ -22,7 +22,8 @@ def send_welcome(message):
 @bot.message_handler(commands=['persons'])
 def send_person_info(message):
     if message.chat.id == CHAT_ID:
-        print("ok")
+        bot.send_message(chat_id=message.chat.id, text=to_str_persons(db.get_users_list()))
+        bot.send_message(chat_id=message.chat.id, text=to_str_quiz(db.get_quiz_list()))
     bot.delete_message(message.chat.id, message.message_id)
 
 
@@ -133,6 +134,27 @@ def delete_all_messages(chat_id):
         except:
             print("nothing")
     db.delete_messages_info(chat_id)
+
+
+def to_str_persons(persons):
+    result = ""
+    for person in persons:
+        result += "id: " + str(person[0]) + " name = @" + str(person[1]) + "\n"
+    return result
+
+
+def to_str_quiz(quiz_el):
+    result = ""
+    for el in quiz_el:
+        result += "id: " + str(el[0]) + \
+                  "   plan: " + str(el[1]) + \
+                  "; wait: " + str(el[2]) + \
+                  "; event: " + str(el[3]) + \
+                  "; type: " + str(el[4]) + \
+                  "; count: " + str(el[5]) + "\n" + \
+                  "u_d: " + str(el[6]) + \
+                  "; c_d: " + str(el[7]) + "\n"
+    return result
 
 
 print('бот запущен')

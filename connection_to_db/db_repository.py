@@ -3,7 +3,7 @@ import sqlite3
 from settings import SQLITE3_ADDRES
 from connection_to_db.db_names import *
 from connection_to_db.db_query import insert_or_ignore_query, update_query, insert_query, select_with_where_query, \
-    delete_query
+    delete_query, select_query
 from modules.quiz import QUEST
 
 conn = sqlite3.connect(SQLITE3_ADDRES, check_same_thread=False)
@@ -62,3 +62,16 @@ def delete_messages_info(chat_id):
     data = [chat_id]
     cursor.execute(query, data)
     conn.commit()
+
+
+def get_users_list():
+    query = select_query(table_name=TABLE_USERS_INFO,
+                         select_columns=[COLUMN_UI_USER_NAME, COLUMN_CHAT_ID])
+    return cursor.execute(query)
+
+
+def get_quiz_list():
+    query = select_query(table_name=TABLE_QUIZ_SURPRISE_TYPE,
+                         select_columns=[COLUMN_CHAT_ID, COLUMN_Q_PLAN, COLUMN_Q_WAIT, COLUMN_Q_EVENT,
+                                         COLUMN_Q_TYPE, COLUMN_Q_COUNT, COLUMN_UPDATE_DATE, COLUMN_CREATION_DATE])
+    return cursor.execute(query)
