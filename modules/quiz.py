@@ -1,15 +1,15 @@
 from telebot import TeleBot
-from texts import QUESTION_0, QUESTION_1, QUESTION_2, QUESTION_3, QUESTION_4, QUEST_INTRO
+from texts import QUESTION_0_TYPE, QUESTION_1_EVENT, QUESTION_2_WAIT, QUESTION_3_PLAN, QUESTION_4_COUNT, QUEST_INTRO
 from elements.keyboards import inline_keyboard_1_to_5, start_or_back_keyboard
 from connection_to_db.db_names import COLUMN_Q_COUNT, COLUMN_Q_EVENT, COLUMN_Q_TYPE, COLUMN_Q_PLAN, COLUMN_Q_WAIT
 
 QUEST = [
     {'text': QUEST_INTRO, 'type': 'start_or_back'},
-    {"column_name_in_db": COLUMN_Q_TYPE, 'text': QUESTION_0, 'type': '1_to_5'},
-    {"column_name_in_db": COLUMN_Q_WAIT, 'text': QUESTION_1, 'type': '1_to_5'},
-    {"column_name_in_db": COLUMN_Q_PLAN, 'text': QUESTION_2, 'type': '1_to_5'},
-    {"column_name_in_db": COLUMN_Q_EVENT, 'text': QUESTION_3, 'type': '1_to_5'},
-    {"column_name_in_db": COLUMN_Q_COUNT, 'text': QUESTION_4, 'type': '1_to_5'},
+    {"column_name_in_db": COLUMN_Q_TYPE, 'text': QUESTION_0_TYPE, 'type': '1_to_5'},
+    {"column_name_in_db": COLUMN_Q_EVENT, 'text': QUESTION_1_EVENT, 'type': '1_to_5'},
+    {"column_name_in_db": COLUMN_Q_WAIT, 'text': QUESTION_2_WAIT, 'type': '1_to_5'},
+    {"column_name_in_db": COLUMN_Q_PLAN, 'text': QUESTION_3_PLAN, 'type': '1_to_5'},
+    {"column_name_in_db": COLUMN_Q_COUNT, 'text': QUESTION_4_COUNT, 'type': '1_to_5'},
 ]
 
 
