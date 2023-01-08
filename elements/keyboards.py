@@ -51,6 +51,13 @@ def menu_or_quiz_keyboard():
     return keyboard
 
 
+def inline_keyboard_end_quiz():
+    keyboard = InlineKeyboardMarkup()
+    keyboard.add(InlineKeyboardButton(texts.END_QUIZ,
+                                      callback_data=dumps({'type': 'menu', 'button': 'menu'})))
+    return keyboard
+
+
 def start_or_back_keyboard():
     keyboard = InlineKeyboardMarkup()
     keyboard.add(InlineKeyboardButton(texts.BACK_TO_MENU,

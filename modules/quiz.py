@@ -1,6 +1,7 @@
 from telebot import TeleBot
-from texts import QUESTION_0_TYPE, QUESTION_1_EVENT, QUESTION_2_WAIT, QUESTION_3_PLAN, QUESTION_4_COUNT, QUEST_INTRO
-from elements.keyboards import inline_keyboard_1_to_5, start_or_back_keyboard
+from texts import QUESTION_0_TYPE, QUESTION_1_EVENT, QUESTION_2_WAIT, QUESTION_3_PLAN, QUESTION_4_COUNT, QUEST_INTRO, \
+    QUEST_END
+from elements.keyboards import inline_keyboard_1_to_5, start_or_back_keyboard, inline_keyboard_end_quiz
 from connection_to_db.db_names import COLUMN_Q_COUNT, COLUMN_Q_EVENT, COLUMN_Q_TYPE, COLUMN_Q_PLAN, COLUMN_Q_WAIT
 
 QUEST = [
@@ -21,7 +22,9 @@ def question(bot: TeleBot, chat_id, index: int):
             return start_or_back(bot, chat_id, index)
     else:
         return bot.send_message(chat_id=chat_id,
-                                text="Hello").message_id
+                                text=QUEST_END,
+                                parse_mode="Markdown",
+                                reply_markup=inline_keyboard_end_quiz()).message_id
 
 
 def quest_1_to_5(bot: TeleBot, chat_id, index: int):

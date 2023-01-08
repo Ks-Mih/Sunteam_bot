@@ -23,11 +23,13 @@ def send_welcome(message):
 def send_person_info(message):
     if message.chat.id == CHAT_ID:
         print("ok")
+    bot.delete_message(message.chat.id, message.message_id)
 
 
 @bot.message_handler(commands=['chat_id'])
 def send_person_info(message):
     print(message.chat.id)
+    bot.delete_message(message.chat.id, message.message_id)
 
 
 @bot.message_handler(content_types=['text'])
