@@ -61,7 +61,7 @@ def button_menu(chat_id):
                             reply_markup=keyboards.menu_keyboard_info(),
                             parse_mode="Markdown"
                             ).message_id
-    quiz_photo = open('photos/quiz_photo.png', 'rb')
+    quiz_photo = open('photos/quiz_main_photo.png', 'rb')
     m1_ind = bot.send_photo(chat_id=chat_id,
                             photo=quiz_photo,
                             caption=texts.MENU_TEXT_QUIZ,
