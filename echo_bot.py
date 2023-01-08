@@ -3,7 +3,7 @@ import json
 from telebot import TeleBot
 
 from modules import quiz
-from settings import MY_BOT_TOKEN
+from settings import MY_BOT_TOKEN, CHAT_ID
 import connection_to_db.db_repository as db
 from elements import keyboards
 import texts
@@ -17,6 +17,17 @@ def send_welcome(message):
 
     bot.delete_message(message.chat.id, message.message_id)
     button_menu(message.chat.id)
+
+
+@bot.message_handler(commands=['persons'])
+def send_person_info(message):
+    if message.chat.id == CHAT_ID:
+        print("ok")
+
+
+@bot.message_handler(commands=['chat_id'])
+def send_person_info(message):
+    print(message.chat.id)
 
 
 @bot.message_handler(content_types=['text'])
